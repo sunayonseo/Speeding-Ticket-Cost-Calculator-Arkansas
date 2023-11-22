@@ -1,0 +1,115 @@
+<style>
+		label, input, select {
+			display: block;
+			margin-bottom: 10px;
+		}
+	</style>
+
+
+	<div>
+		<h2>Speeding Ticket Cost Calculator Arkansas</h2>
+		<label for="violation-type">Violation Type:</label>
+		<select id="violation-type">
+			<option value="regular">Speeding in Regular Roads</option>
+			<option value="school">Speeding in School Zones</option>
+		</select>
+		<label for="speed">Speed Limit (mph):</label>
+		<input type="number" id="speed" name="speed" min="1" max="100" required="">
+		<label for="offense-count">Offense Count (within 1 year):</label>
+		<input type="number" id="offense-count" name="offense-count" min="1" max="3" required="">
+		<button onclick="calculate()">Calculate</button>
+		<div id="result"></div>
+	</div>
+	<script>
+		function calculate() {
+			let violationType = document.getElementById("violation-type").value;
+			let speed = parseInt(document.getElementById("speed").value);
+			let offenseCount = parseInt(document.getElementById("offense-count").value);
+			let resultDiv = document.getElementById("result");
+			let fine = 0;
+			let jailTime = 0;
+
+			if (violationType === "regular") {
+				if (speed <= 10) {
+					if (offenseCount === 2) {
+						fine = 100;
+						jailTime = 10;
+					} else if (offenseCount === 3) {
+						fine = 200;
+						jailTime = 20;
+					}
+				} else if (speed > 10 && speed <= 15) {
+					if (offenseCount === 2) {
+						fine = 100;
+						jailTime = 10;
+					} else if (offenseCount === 3) {
+						fine = 200;
+						jailTime = 20;
+					}
+				} else if (speed > 15 && speed <= 25) {
+					if (offenseCount === 1) {
+						fine = 100;
+						jailTime = 10;
+					} else if (offenseCount === 2) {
+						fine = 200;
+						jailTime = 20;
+					} else if (offenseCount === 3) {
+						fine = 500;
+						jailTime = 180;
+					}
+				} else if (speed > 25) {
+					fine = 500;
+					jailTime = 30;
+				}
+			} else if (violationType === "school") {
+				if (offenseCount === 1) {
+					fine = 25;
+					jailTime = 1;
+				} else if (offenseCount === 2) {
+					fine = 50;
+					jailTime = 5;
+				} else if (offenseCount === 3) {
+					fine = 250;
+					jailTime = 25;
+				}
+			}
+
+			resultDiv.innerHTML = "Fine: $" + fine + " | Jail Time: " + jailTime + " days";
+		}
+	</script>
+    <style>
+  body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+  }
+  h2 {
+    color: #0066cc;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  select, input[type="number"], button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  button {
+    background-color: #0066cc;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #003d6b;
+  }
+  #output {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #0066cc;
+  }
+</style>
